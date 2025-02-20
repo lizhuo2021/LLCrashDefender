@@ -54,9 +54,19 @@
         
         [self.dataSource addObject:cellData];
     }
+    {
+        LLCommonTableListCellData * cellData = [LLCommonTableListCellData new];
+        cellData.cellName = @"LLCrash4AppLaunchViewController";
+        cellData.showTitle = @"持续的App启动崩溃";
+        
+        [self.dataSource addObject:cellData];
+    }
     
 }
 - (void)configSubviews {
+    
+    self.navigationController.navigationBar.backgroundColor = UIColor.whiteColor;
+    self.navigationController.navigationBar.tintColor = UIColor.blackColor;
     self.title = @"Crash防护";
     
     self.view.backgroundColor = UIColor.whiteColor;

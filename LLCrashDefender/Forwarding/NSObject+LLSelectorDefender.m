@@ -11,17 +11,17 @@
 
 @implementation NSObject (LLSelectorDefender)
 
-+ (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        // 交换实例方法
-        [NSObject ll_defenderSwizzlingInstanceMethod:@selector(forwardingTargetForSelector:) withMethod:@selector(ll_forwardingTargetForSelector:) withClass:[NSObject class]];
-        
-        // 交换类方法
-        [NSObject ll_defenderSwizzlingClassMethod:@selector(forwardingTargetForSelector:) withMethod:@selector(ll_forwardingTargetForSelector:) withClass:[NSObject class]];
-    });
-    
-}
+//+ (void)load {
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        // 交换实例方法
+//        [NSObject ll_defenderSwizzlingInstanceMethod:@selector(forwardingTargetForSelector:) withMethod:@selector(ll_forwardingTargetForSelector:) withClass:[NSObject class]];
+//        
+//        // 交换类方法
+//        [NSObject ll_defenderSwizzlingClassMethod:@selector(forwardingTargetForSelector:) withMethod:@selector(ll_forwardingTargetForSelector:) withClass:[NSObject class]];
+//    });
+//    
+//}
 
 
 static int selectorNotfoundError(id self, SEL selector) {

@@ -7,17 +7,37 @@
 
 #import "SceneDelegate.h"
 
+#import "LLCrashHandlerViewController.h"
+
+#import "LLCrash4AppLaunchRepairViewController.h"
+
 @interface SceneDelegate ()
 
 @end
 
 @implementation SceneDelegate
 
-
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.windowScene = (UIWindowScene*)scene;
+    [self.window makeKeyAndVisible];
+    
+//    App修复页面
+    BOOL showRepairPage = [[NSUserDefaults standardUserDefaults] boolForKey:@"kSceneDelegateShowRepairPage"];
+    if (showRepairPage) {
+        LLCrash4AppLaunchRepairViewController * controller = [LLCrash4AppLaunchRepairViewController new];
+        UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:controller];
+        self.window.rootViewController = navi;
+    }else {
+        UINavigationController *rootNavgationController = [[UINavigationController alloc] initWithRootViewController:[LLCrashHandlerViewController new]];
+        self.window.rootViewController = rootNavgationController;
+    }
+    
+    
 }
 
 

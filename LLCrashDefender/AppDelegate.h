@@ -6,9 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LLCrash4AppLaunchHelper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property(nonatomic, strong) LLCrash4AppLaunchHelper *crashHelper;
 
 @end
 
